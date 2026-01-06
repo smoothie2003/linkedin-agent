@@ -26,16 +26,42 @@ Install dependencies with:
 
 ```bash
 pip install -r requirements.txt
-OpenAI API Key Setup (Required)
-This project uses the OpenAI API through CrewAI.
+```
+## 🔐 OpenAI API Key Setup (Required)
 
-The API key must be provided via an environment variable named:
+This project uses the OpenAI API since thats the model the agents are using You can switch up your own model and supply your own keys.
 
-nginx
-Copy code
-OPENAI_API_KEY
-Recommended Setup: GitHub Codespaces
-# LinkedIn Agent
+**You must provide your own API key** — it is **not included** in this repository.
+
+### ✅ Recommended: GitHub Codespaces (Secure)
+
+If you are using **GitHub Codespaces**, add your API key as a Codespaces secret:
+
+1. Go to your repository on GitHub
+2. Navigate to:
+   **Settings → Secrets and variables → Codespaces**
+3. Click **New repository secret**
+4. Add:
+   - **Name:** `OPENAI_API_KEY`
+   - **Value:** your OpenAI API key
+5. Save and **restart or rebuild** your Codespace
+
+Secrets are injected as environment variables and are:
+- ❌ Not stored in the repo
+- ❌ Not shared with forks or clones
+- ❌ Not visible in code or commits
+
+---
+
+### 🧪 Verify the key is loaded (Terminal)
+
+Inside your Codespace terminal, run:
+
+```bash
+printenv OPENAI_API_KEY
+```
+
+# Agent Workflow Deep Dive
 
 Agentic workflow for generating LinkedIn posts using CrewAI and the OpenAI API, with an optional human-in-the-loop review step.
 
