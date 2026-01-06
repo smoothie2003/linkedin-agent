@@ -60,7 +60,44 @@ Inside your Codespace terminal, run:
 ```bash
 printenv OPENAI_API_KEY
 ```
+# Agent Workflow Design
 
+```
+┌──────────────────────────┐
+│        Human (You)       │
+│  • Topic                 │
+│  • Max lines             │
+│  • Emojis (yes / no)     │
+└─────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│  Agent 1: Content Writer │◀──────────────┐
+│  • Generates full draft  │               │
+│  • Focus on ideas & flow │               │
+│  • Incorporates feedback │               │
+└─────────────┬────────────┘               │
+              │                            │
+              ▼                            │
+┌──────────────────────────┐               │
+│  Agent 2: Editor / Ctrl  │               │
+│  • Enforces constraints  │               │
+│    – Max lines           │               │
+│    – Emojis yes / no     │               │
+│  • Tightens & compresses │               │
+└─────────────┬────────────┘               │
+              │                            │
+              ▼                            │
+┌──────────────────────────┐               │
+│  Human-in-the-Loop       │               │
+│  • Approve               │               │
+│  • Reject + feedback     │───────────────┘
+└─────────────┬────────────┘
+              │
+              ▼
+        ✅ Final Post
+
+```
 # Agent Workflow Deep Dive
 
 Agentic workflow for generating LinkedIn posts using CrewAI and the OpenAI API, with an optional human-in-the-loop review step.
